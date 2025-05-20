@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: rollouts-demo
-          image: argoproj/rollouts-demo:blue
+          image: argoproj/rollouts-demo:bad-red # blue/red/green (see https://hub.docker.com/r/argoproj/rollouts-demo/tags)
           ports:
             - containerPort: 8080
   strategy:
