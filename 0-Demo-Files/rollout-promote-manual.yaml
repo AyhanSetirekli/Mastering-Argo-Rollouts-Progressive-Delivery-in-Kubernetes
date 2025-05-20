@@ -4,15 +4,6 @@ metadata:
   name: canary-demo-promote
 spec:
   replicas: 4
-  strategy:
-    canary:
-      steps:
-        - setWeight: 25
-        - pause: {}
-        - setWeight: 50
-        - pause: {}
-        - setWeight: 75
-        - pause: {}
   selector:
     matchLabels:
       app: demo-app
@@ -23,6 +14,16 @@ spec:
     spec:
       containers:
         - name: demo-container
-          image: nginx:1.19.0
+          image: nginx:1.20.0 # 1.19.0 -> 1.20.0
           ports:
             - containerPort: 80
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause: {}
+        - setWeight: 50
+        - pause: {}
+        - setWeight: 75
+        - pause: {}
+        - setWeight: 100
