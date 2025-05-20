@@ -8,7 +8,7 @@ spec:
       interval: 5m
       provider:
         prometheus:
-          address: http://prometheus-server.prometheus.svc.cluster.local  # Update this URL based on your Prometheus setup
+          address: http://prometheus-server.prometheus.svc.cluster.local # Update this URL based on your Prometheus setup
           query: |
             avg(http_request_duration_seconds{app="webapp"})
       successCondition: result < 0.5

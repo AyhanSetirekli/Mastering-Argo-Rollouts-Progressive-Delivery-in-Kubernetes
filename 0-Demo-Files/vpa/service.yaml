@@ -6,6 +6,6 @@ spec:
   selector:
     app: vpa-demo-rollout # This should match the label selector of your Rollout
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

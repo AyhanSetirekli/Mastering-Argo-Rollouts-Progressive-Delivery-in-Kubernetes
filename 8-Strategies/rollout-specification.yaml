@@ -3,12 +3,12 @@ kind: Rollout
 metadata:
   name: example-rollout-canary
 spec:
-  replicas: 5   # Number of desired pods. # Defaults to 1.
+  replicas: 5 # Number of desired pods. # Defaults to 1.
   analysis:
     # limits the number of successful analysis runs and experiments to be stored in a history
     # Defaults to 5.
     successfulRunHistoryLimit: 10
-    # limits the number of unsuccessful analysis runs and experiments to be stored in a history. 
+    # limits the number of unsuccessful analysis runs and experiments to be stored in a history.
     # Stages for unsuccessful: "Error", "Failed", "Inconclusive"# Defaults to 5.
     unsuccessfulRunHistoryLimit: 10
   strategy:
@@ -23,10 +23,10 @@ spec:
       # cutover. +optional
       prePromotionAnalysis:
         templates:
-        - templateName: success-rate
+          - templateName: success-rate
         args:
-        - name: service-name
-          value: guestbook-svc.default.svc.cluster.local
+          - name: service-name
+            value: guestbook-svc.default.svc.cluster.local
       # Anti Affinity configuration between desired and previous ReplicaSet. # Only one must be specified
       antiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution: {}
@@ -43,28 +43,28 @@ spec:
       # initial deploy of a rollout. +optional
       analysis:
         templates:
-        - templateName: success-rate
+          - templateName: success-rate
         args:
-        - name: service-name
-          value: guestbook-svc.default.svc.cluster.local
+          - name: service-name
+            value: guestbook-svc.default.svc.cluster.local
       # Steps define sequence of steps to take during an update of the canary. Skipped upon initial deploy of a rollout. +optional
       steps:
-      # Sets the ratio of canary ReplicaSet to 20%
-      - setWeight: 20
-      # Pauses the rollout for an hour. Supported units: s, m, h
-      - pause:
-          duration: 1h
-      # Pauses indefinitely until manually resumed
-      - pause: {}
-      # an inline analysis step
-      - analysis:
-          templates:
-          - templateName: success-rate
+        # Sets the ratio of canary ReplicaSet to 20%
+        - setWeight: 20
+        # Pauses the rollout for an hour. Supported units: s, m, h
+        - pause:
+            duration: 1h
+        # Pauses indefinitely until manually resumed
+        - pause: {}
+        # an inline analysis step
+        - analysis:
+            templates:
+              - templateName: success-rate
       trafficRouting:
         # NGINX Ingress Controller routing configuration
         nginx:
-          stableIngress: primary-ingress  # required
+          stableIngress: primary-ingress # required
           annotationPrefix: customingress.nginx.ingress.kubernetes.io # optional
-          additionalIngressAnnotations:   # optional
+          additionalIngressAnnotations: # optional
             canary-by-header: X-Canary
             canary-by-header-value: iwantsit

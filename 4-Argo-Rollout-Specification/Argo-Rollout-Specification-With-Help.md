@@ -11,7 +11,7 @@ spec:
     # limits the number of successful analysis runs and experiments to be stored in a history
     # Defaults to 5.
     successfulRunHistoryLimit: 10
-    # limits the number of unsuccessful analysis runs and experiments to be stored in a history. 
+    # limits the number of unsuccessful analysis runs and experiments to be stored in a history.
     # Stages for unsuccessful: "Error", "Failed", "Inconclusive"
     # Defaults to 5.
     unsuccessfulRunHistoryLimit: 10
@@ -23,9 +23,9 @@ spec:
     matchLabels:
       app: guestbook
 
-  # WorkloadRef holds a references to a workload that provides Pod template 
+  # WorkloadRef holds a references to a workload that provides Pod template
   # (e.g. Deployment). If used, then do not use Rollout template property.
-  workloadRef: 
+  workloadRef:
     apiVersion: apps/v1
     kind: Deployment
     name: rollout-ref-deployment
@@ -38,7 +38,7 @@ spec:
     scaleDown: never|onsuccess|progressively
 
   # Template describes the pods that will be created. Same as deployment.
-  # If used, then do not use Rollout workloadRef property. 
+  # If used, then do not use Rollout workloadRef property.
   template:
     spec:
       containers:
@@ -291,7 +291,7 @@ spec:
           matchTrafficWeight: true
 
       # Sets header based route with specified header values
-      # Setting header based route will send all traffic to the canary for the requests 
+      # Setting header based route will send all traffic to the canary for the requests
       # with a specified header, in this case request header "version":"2"
       # (supported only with trafficRouting, for Istio only at the moment)
       - setHeaderRoute:
@@ -302,7 +302,7 @@ spec:
           match:
               # headerName The name of the header to apply the match rules to.
             - headerName: "version"
-              # headerValue must contain exactly one field of exact, regex, or prefix. Not all traffic routers support 
+              # headerValue must contain exactly one field of exact, regex, or prefix. Not all traffic routers support
               # all types
               headerValue:
                 # Exact will only match if the header value is exactly the same
@@ -385,7 +385,7 @@ spec:
         # This is a list of routes that Argo Rollouts has the rights to manage it is currently only required for
         # setMirrorRoute and setHeaderRoute. The order of managedRoutes array also sets the precedence of the route
         # in the traffic router. Argo Rollouts will place these routes in the order specified above any routes already
-        # defined in the used traffic router if something exists. The names here must match the names from the 
+        # defined in the used traffic router if something exists. The names here must match the names from the
         # setHeaderRoute and setMirrorRoute steps.
         managedRoutes:
           - name: set-header
@@ -393,7 +393,7 @@ spec:
         # Istio traffic routing configuration
         istio:
           # Either virtualService or virtualServices can be configured.
-          virtualService: 
+          virtualService:
             name: rollout-vsvc  # required
             routes:
             - primary # optional if there is a single route in VirtualService, required otherwise
@@ -442,5 +442,5 @@ status:
   - reason: BlueGreenPause
     startTime: 2019-10-00T1234
   - reason: AnalysisRunInconclusive
-    startTime: 2019-10-00T1234 
-```    
+    startTime: 2019-10-00T1234
+```

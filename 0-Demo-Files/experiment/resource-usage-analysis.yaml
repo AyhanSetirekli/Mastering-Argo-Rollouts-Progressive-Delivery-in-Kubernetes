@@ -4,14 +4,14 @@ metadata:
   name: resource-usage-analysis
 spec:
   args:
-  - name: required-pod-count
-    value: "3"  # default value if not overridden by Experiment or Rollout
+    - name: required-pod-count
+      value: "3" # default value if not overridden by Experiment or Rollout
   metrics:
-  - name: pod-count
-    successCondition: "result[0] >= {{args.required-pod-count}}"
-    failureCondition: "result[0] < {{args.required-pod-count}}"
-    provider:
-      prometheus:
-        address: http://prometheus-operated.default.svc.cluster.local:9090
-        query: |
-          count(kube_pod_info{namespace="default", pod=~"example-app-.*"})
+    - name: pod-count
+      successCondition: "result[0] >= {{args.required-pod-count}}"
+      failureCondition: "result[0] < {{args.required-pod-count}}"
+      provider:
+        prometheus:
+          address: http://prometheus-operated.default.svc.cluster.local:9090
+          query: |
+            count(kube_pod_info{namespace="default", pod=~"example-app-.*"})

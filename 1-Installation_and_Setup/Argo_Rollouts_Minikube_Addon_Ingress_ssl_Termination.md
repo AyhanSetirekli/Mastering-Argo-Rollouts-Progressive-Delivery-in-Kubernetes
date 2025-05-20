@@ -4,12 +4,14 @@
 This guide demonstrates setting up SSL termination using the Ingress addon in Minikube, involving creating a TLS certificate, deploying a sample application, and configuring the Ingress for SSL termination.
 
 ## Prerequisites
+
 - **Minikube**: Ensure Minikube is installed and running.
 - **kubectl**: Install `kubectl` to interact with the cluster.
 
 ## Steps
 
 ### 1. Start Minikube
+
 Ensure Minikube is running:
 
 ```bash
@@ -17,6 +19,7 @@ minikube start
 ```
 
 ### 2. Enable the Ingress Addon
+
 Enable the Ingress addon:
 
 ```bash
@@ -24,6 +27,7 @@ minikube addons enable ingress
 ```
 
 ### 3. Create a Self-Signed TLS Certificate
+
 For this demonstration, we'll use a self-signed TLS certificate.
 
 - **Generate a Private Key and Certificate**:
@@ -39,6 +43,7 @@ For this demonstration, we'll use a self-signed TLS certificate.
   ```
 
 ### 4. Deploy a Sample Application
+
 Deploy an example application:
 
 ```yaml
@@ -83,6 +88,7 @@ kubectl apply -f example-app.yaml
 ```
 
 ### 5. Create an Ingress Resource with TLS Configuration
+
 Configure the Ingress to use the TLS certificate for SSL termination:
 
 ```yaml
@@ -116,7 +122,8 @@ kubectl apply -f example-ingress.yaml
 ```
 
 ### 6. Access the Application
-- **Find Minikube IP**: 
+
+- **Find Minikube IP**:
 
   ```bash
   minikube ip
@@ -127,4 +134,5 @@ kubectl apply -f example-ingress.yaml
 - **Access in Browser**: Navigate to `https://hello-world.info` to see the application's response via HTTPS.
 
 ## Conclusion
+
 This setup demonstrates SSL termination at the Ingress level in Minikube. It centralizes SSL termination, allowing for easier management of TLS settings and certificates.

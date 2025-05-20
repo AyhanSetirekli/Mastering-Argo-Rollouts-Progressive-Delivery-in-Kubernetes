@@ -15,8 +15,8 @@ spec:
         app: example-app
     spec:
       containers:
-      - name: example-app
-        image: prom/prometheus-example-app
-        ports:
-        - name: web
-          containerPort: 8080
+        - name: example-app
+          image: prom/prometheus-example-app
+          ports:
+            - name: web
+              containerPort: 8080

@@ -5,14 +5,14 @@ metadata:
 spec:
   replicas: 3
   strategy:
-    blueGreen: 
+    blueGreen:
       activeService: blue-green-demo-active
       previewService: blue-green-demo-preview
       autoPromotionEnabled: false
       prePromotionAnalysis:
         templates:
-        - templateName: always-pass
-          clusterScope: true
+          - templateName: always-pass
+            clusterScope: true
   selector:
     matchLabels:
       app: blue-green-demo
@@ -22,8 +22,7 @@ spec:
         app: blue-green-demo
     spec:
       containers:
-      - name: app-container
-        image: argoproj/rollouts-demo:blue
-        ports:
-        - containerPort: 8080
-
+        - name: app-container
+          image: argoproj/rollouts-demo:blue
+          ports:
+            - containerPort: 8080

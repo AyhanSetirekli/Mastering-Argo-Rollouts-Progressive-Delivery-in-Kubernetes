@@ -23,22 +23,22 @@ spec:
         app: rollout-experiment-step
     spec:
       containers:
-      - name: rollouts-demo
-        image: argoproj/rollouts-demo:green
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
+        - name: rollouts-demo
+          image: argoproj/rollouts-demo:green
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
   strategy:
     canary:
       steps:
-      - setWeight: 25
-      # The second step is the experiment which starts a single canary pod
-      - experiment:
-          templates:
-          - name: canary
-            specRef: canary
-          # This experiment performs its own analysis by referencing one or more AnalysisTemplates
-          # here. The success or failure of these runs will progress or abort the rollout respectively.
-          analyses:
-          - name: random-fail
-            templateName: random-fail
+        - setWeight: 25
+        # The second step is the experiment which starts a single canary pod
+        - experiment:
+            templates:
+              - name: canary
+                specRef: canary
+            # This experiment performs its own analysis by referencing one or more AnalysisTemplates
+            # here. The success or failure of these runs will progress or abort the rollout respectively.
+            analyses:
+              - name: random-fail
+                templateName: random-fail

@@ -13,9 +13,9 @@ spec:
             template:
               spec:
                 containers:
-                - name: main
-                  image: busybox
-                  command: [sh, -c]
-                  args: ["echo -n 99.5"]
+                  - name: main
+                    image: busybox
+                    command: [sh, -c]
+                    args: ["echo -n 99.5"]
                 restartPolicy: Never
       successCondition: "result >= 99"

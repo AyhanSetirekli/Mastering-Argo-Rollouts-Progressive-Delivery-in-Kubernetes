@@ -1,4 +1,5 @@
-## Ingress addon in Minikube:
+## Ingress addon in Minikube
+
 Ingress is an API object that manages external access to the services in a Kubernetes cluster, typically HTTP. Ingress can provide load balancing, SSL termination, and name-based virtual hosting. To understand and use the Ingress addon in Minikube, follow these steps:
 
 ### Prerequisites
@@ -129,4 +130,3 @@ bashkubectl apply -f example-ingress.yaml
 * Make sure that your Minikube VM has enough resources (CPU, Memory) to run the Ingress controller along with your applications.
 
 By following these steps, you'll have a basic understanding of how to set up and use the Ingress addon in Minikube. This is a fundamental skill for Kubernetes networking and is widely applicable in real-world scenarios.
-

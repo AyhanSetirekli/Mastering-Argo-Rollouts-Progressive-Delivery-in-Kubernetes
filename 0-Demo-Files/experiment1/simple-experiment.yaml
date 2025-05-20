@@ -4,34 +4,34 @@ metadata:
   name: simple-demo-experiment
 spec:
   templates:
-  - name: blue
-    selector:
-      matchLabels:
-        app: simple-demo
-    template:
-      metadata:
-        labels:
+    - name: blue
+      selector:
+        matchLabels:
           app: simple-demo
-      spec:
-        containers:
-        - name: simple-demo
-          image: nginx:1.14.2
-          ports:
-          - containerPort: 80
-  - name: green
-    selector:
-      matchLabels:
-        app: simple-demo
-    template:
-      metadata:
-        labels:
+      template:
+        metadata:
+          labels:
+            app: simple-demo
+        spec:
+          containers:
+            - name: simple-demo
+              image: nginx:1.14.2
+              ports:
+                - containerPort: 80
+    - name: green
+      selector:
+        matchLabels:
           app: simple-demo
-      spec:
-        containers:
-        - name: simple-demo
-          image: nginx:1.16.1
-          ports:
-          - containerPort: 80
+      template:
+        metadata:
+          labels:
+            app: simple-demo
+        spec:
+          containers:
+            - name: simple-demo
+              image: nginx:1.16.1
+              ports:
+                - containerPort: 80
   analyses:
-  - name: simple-analysis-run
-    templateName: simple-analysis
+    - name: simple-analysis-run
+      templateName: simple-analysis

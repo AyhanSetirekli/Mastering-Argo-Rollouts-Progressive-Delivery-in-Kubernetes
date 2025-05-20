@@ -4,8 +4,8 @@ metadata:
   name: resource-usage-analysis
 spec:
   args:
-  - name: required-pod-count
-    value: "3"  # default value if not overridden by Rollout
+    - name: required-pod-count
+      value: "3" # default value if not overridden by Rollout
   metrics:
     - name: pod-count
       successCondition: "result[0] >= {{args.required-pod-count}}"

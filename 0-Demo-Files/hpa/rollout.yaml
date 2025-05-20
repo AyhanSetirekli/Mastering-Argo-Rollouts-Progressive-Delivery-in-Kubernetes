@@ -13,17 +13,17 @@ spec:
         app: rollouts-demo
     spec:
       containers:
-      - name: rollouts-demo
-        image: argoproj/rollouts-demo:blue
-        ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            cpu: "100m"
-          limits:
-            cpu: "200m"
+        - name: rollouts-demo
+          image: argoproj/rollouts-demo:blue
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"
   strategy:
     canary:
       steps:
-      - setWeight: 20
-      - pause: {duration: 10s}
+        - setWeight: 20
+        - pause: { duration: 10s }

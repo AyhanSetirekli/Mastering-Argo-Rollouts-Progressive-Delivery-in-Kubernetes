@@ -7,5 +7,5 @@ spec:
     matchLabels:
       app: simple-http-server
   endpoints:
-  - port: http
-    interval: 15s
+    - port: http
+      interval: 15s

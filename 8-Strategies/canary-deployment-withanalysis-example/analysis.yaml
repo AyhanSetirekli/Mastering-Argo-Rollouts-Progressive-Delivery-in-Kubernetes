@@ -4,15 +4,15 @@ metadata:
   name: canary-check
 spec:
   metrics:
-  - name: test
-    provider:
-      job:
-        spec:
-          backoffLimit: 1
-          template:
-            spec:
-              containers:
-              - name: busybox
-                image: busybox
-                #args: [test]  #--> for making analysis fail, uncomment
-              restartPolicy: Never
+    - name: test
+      provider:
+        job:
+          spec:
+            backoffLimit: 1
+            template:
+              spec:
+                containers:
+                  - name: busybox
+                    image: busybox
+                    #args: [test]  #--> for making analysis fail, uncomment
+                restartPolicy: Never

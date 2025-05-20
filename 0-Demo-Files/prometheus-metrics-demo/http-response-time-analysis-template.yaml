@@ -4,11 +4,11 @@ metadata:
   name: http-response-time-check
 spec:
   metrics:
-  - name: response-time
-    provider:
-      prometheus:
-        address: http://prometheus-operated.default.svc.cluster.local  # Update based on your Prometheus setup
-        query: |
-          histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{app="simple-http-server"}[5m])) by (le))
-    successCondition: "result <= 0.3"
-    failureCondition: "result > 0.3"
+    - name: response-time
+      provider:
+        prometheus:
+          address: http://prometheus-operated.default.svc.cluster.local # Update based on your Prometheus setup
+          query: |
+            histogram_quantile(0.99, sum(rate(http_request_duration_seconds_bucket{app="simple-http-server"}[5m])) by (le))
+      successCondition: "result <= 0.3"
+      failureCondition: "result > 0.3"

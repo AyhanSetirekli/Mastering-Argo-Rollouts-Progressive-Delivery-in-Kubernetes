@@ -13,16 +13,16 @@ spec:
         app: simple-http-server
     spec:
       containers:
-      - name: http-server
-        image: mendhak/http-https-echo
-        ports:
-        - containerPort: 80
+        - name: http-server
+          image: mendhak/http-https-echo
+          ports:
+            - containerPort: 80
   strategy:
     canary:
       steps:
-      - setWeight: 50
-      - pause: {duration: 15s}
-      - analysis:
-          templates:
-          - templateName: http-response-time-check
-      - setWeight: 100
+        - setWeight: 50
+        - pause: { duration: 15s }
+        - analysis:
+            templates:
+              - templateName: http-response-time-check
+        - setWeight: 100

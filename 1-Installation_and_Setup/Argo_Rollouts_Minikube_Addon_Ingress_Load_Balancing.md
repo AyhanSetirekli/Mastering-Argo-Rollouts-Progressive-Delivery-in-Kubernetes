@@ -4,12 +4,14 @@
 This guide demonstrates load balancing using Minikube's Ingress by creating two versions of an application and managing traffic distribution between them.
 
 ## Prerequisites
+
 - **Minikube**: Ensure Minikube is installed and running.
 - **kubectl**: Install `kubectl` to interact with the cluster.
 
 ## Steps
 
 ### 1. Start Minikube
+
 Ensure Minikube is running:
 
 ```bash
@@ -17,6 +19,7 @@ minikube start
 ```
 
 ### 2. Enable the Ingress Addon
+
 Enable the Ingress addon:
 
 ```bash
@@ -24,6 +27,7 @@ minikube addons enable ingress
 ```
 
 ### 3. Deploy Two Versions of an Application
+
 Create two deployments for different versions of your app.
 
 **Deployment 1 (Version 1):**
@@ -92,6 +96,7 @@ kubectl apply -f version2.yaml
 ```
 
 ### 4. Create Services for Each Version
+
 Expose each deployment with a Kubernetes Service:
 
 ```yaml
@@ -134,6 +139,7 @@ kubectl apply -f service-version2.yaml
 ```
 
 ### 5. Create an Ingress Resource for Load Balancing
+
 Define an Ingress resource to balance traffic:
 
 ```yaml
@@ -169,7 +175,8 @@ kubectl apply -f ingress.yaml
 ```
 
 ### 6. Access the Application
-- **Find Minikube IP**: 
+
+- **Find Minikube IP**:
 
   ```bash
   minikube ip
@@ -180,4 +187,5 @@ kubectl apply -f ingress.yaml
 - **Test Load Balancing**: Access `http://example.com/v1` and `http://example.com/v2` in your browser. You should see responses from version 1 and version 2 of the app, respectively.
 
 ## Conclusion
+
 This setup demonstrates basic load balancing with Minikube's Ingress, routing traffic to different application versions based on URL path. It's fundamental in various deployment strategies like blue-green deployments, A/B testing, and canary releases.
